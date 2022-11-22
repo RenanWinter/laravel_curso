@@ -7,14 +7,24 @@
                     <div class="menu__wrap">
                         <nav class="menu__nav">
                             <div class="logo">
-                                <a href="index.html" class="logo__black"><img src="{{asset('frontend/assets/img/logo/logo_black.png')}}" alt=""></a>
-                                <a href="index.html" class="logo__white"><img src="{{asset('frontend/assets/img/logo/logo_white.png')}}" alt=""></a>
+                                <a href="{{ route('index') }}" class="logo__black"><img
+                                        src="{{ asset('frontend/assets/img/logo/logo_black.png') }}" alt=""></a>
+                                <a href="{{ route('index') }}" class="logo__white"><img
+                                        src="{{ asset('frontend/assets/img/logo/logo_white.png') }}" alt=""></a>
                             </div>
                             <div class="navbar__wrap main__menu d-none d-xl-flex">
                                 <ul class="navigation">
-                                    <li class="active"><a href="index.html">Home</a></li>
-                                    <li><a href="about.html">About</a></li>
-                                    <li><a href="services-details.html">Services</a></li>
+                                    <li class="{{ Route::currentRouteName() == 'index' ? 'active' : '' }}">
+                                        <a href="{{ route('index') }}">Home</a>
+                                    </li>
+                                    <li
+                                        class="{{ Route::currentRouteName() == 'home.about' ? 'active' : '' }}">
+                                        <a href="{{ route('home.about') }}">About</a>
+                                    </li>
+                                    <li
+                                        class="{{ Route::currentRouteName() == 'home.services' ? 'active' : '' }}">
+                                        <a href="services-details.html">Services</a>
+                                    </li>
                                     <li class="menu-item-has-children"><a href="#">Portfolio</a>
                                         <ul class="sub-menu">
                                             <li><a href="portfolio.html">Portfolio</a></li>
@@ -40,8 +50,12 @@
                         <nav class="menu__box">
                             <div class="close__btn"><i class="fal fa-times"></i></div>
                             <div class="nav-logo">
-                                <a href="index.html" class="logo__black"><img src="{{asset('frontend/assets/img/logo/logo_black.png')}}" alt=""></a>
-                                <a href="index.html" class="logo__white"><img src="{{asset('frontend/assets/img/logo/logo_white.png')}}" alt=""></a>
+                                <a href="index.html" class="logo__black"><img
+                                        src="{{ asset('frontend/assets/img/logo/logo_black.png') }}"
+                                        alt=""></a>
+                                <a href="index.html" class="logo__white"><img
+                                        src="{{ asset('frontend/assets/img/logo/logo_white.png') }}"
+                                        alt=""></a>
                             </div>
                             <div class="menu__outer">
                                 <!--Here Menu Will Come Automatically Via Javascript / Same Menu as in Header-->

@@ -11,7 +11,7 @@ class HomeSliderController extends Controller
 {
 
 
-    public function index()
+    public function edit()
     {
         $homeSlide = HomeSlide::find(1);
         return view('admin.home_slide.home_slide_index', compact('homeSlide'));
@@ -44,6 +44,6 @@ class HomeSliderController extends Controller
 
 
 
-        return redirect()->route('home.slide',compact('homeSlide'))->with($notification);
+        return redirect()->route('admin.home.slide',compact('homeSlide'))->with($notification);
     }
 }

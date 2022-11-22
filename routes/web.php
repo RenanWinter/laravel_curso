@@ -4,6 +4,7 @@ use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\Home\HomeSliderController;
+use App\Http\Controllers\Home\HomeAboutController;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,7 +19,7 @@ use App\Http\Controllers\Home\HomeSliderController;
 
 Route::get('/', function () {
     return view('frontend.index');
-});
+})->name('index');
 
 Route::get('/dashboard', function () {
     return view('admin.index');
@@ -37,14 +38,16 @@ Route::controller(AdminController::class)->group(function () {
     Route::post('/admin/profile/store', 'storeProfile')->name('admin.profile.store');
     Route::get('/admin/profile/passord/change', 'changePassword')->name('admin.profile.password.change');
     Route::post('/admin/profile/passord/update', 'updatePassword')->name('admin.profile.password.update');
-
 });
 
 Route::controller(HomeSliderController::class)->group(function () {
-    Route::get('/home/slide', 'index')->name('home.slide');
-    Route::patch('/home/slide/update', 'update')->name('home.slide.update');
-
-
+    Route::get('/admin/home/slide', 'edit')->name('admin.home.slide');
+    Route::patch('/admin/home/slide/update', 'update')->name('admin.home.slide.update');
 });
 
+Route::controller(HomeAboutController::class)->group(function () {
+    Route::get('/admin/home/about', 'edit')->name('admin.home.about');
+    Route::patch('/admin/home/about/update', 'update')->name('admin.home.about.update');
+    Route::get('/about', 'index')->name('home.about');
+});
 require __DIR__ . '/auth.php';
